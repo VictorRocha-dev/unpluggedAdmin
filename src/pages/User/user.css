@@ -1,0 +1,160 @@
+body {
+  overflow-x: hidden;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  width: calc(100% - 20vw);
+  margin-left: 20vw;
+}
+
+.user-container { /* Atualizado o nome da classe */
+  width: 80vw;
+}
+
+.searchcontainer {
+  width: 80%;
+  height: 20vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: auto;
+  padding: 10px;
+}
+
+hr {
+  width: 90%;
+  border: 1px solid #232227;
+  text-align: center;
+  margin: auto;
+}
+
+.searchcontainer input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  margin: auto;
+  background-color: #232227;
+  outline: none;
+  padding-left: 60px;
+  font-family: 'Epilogue', sans-serif;
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  transform: translateY(-50%);
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.searchcontainer input::placeholder {
+  color: #fff;
+}
+
+.searchcontainer img {
+  margin: auto;
+  width: 50px;
+  margin-left: 5%;
+}
+
+.createnewmodule {
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5vh;
+}
+
+.createnewmodule input {
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  background-color: #6C63FF;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.createnewmodule input:hover {
+  transition: 0.3s;
+  color: rgb(177, 173, 173);
+  background-color: #38327c;
+}
+
+.users-lista { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userslisttitle { /* Atualizado o nome da classe */
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  padding: 10px;
+  color: #96959D;
+  margin-top: 50px;
+}
+.user-name { /* Atualizado o nome da classe */
+  width: 20vw;
+  text-align: justify;
+  padding-left: 15px;
+}
+
+.user-count { 
+  width: 20vw;
+  text-align: justify;
+  padding-left: 40px;
+}
+
+.titlesnames {
+  width: 60vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.res {
+  margin-top: 80px;
+  color: white;
+  font-size: 25px;
+}
+
+
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 110px;
+  cursor: pointer;
+  position: relative;
+}
+
+.truncate:hover::after {
+  opacity: 1;
+  height: auto;
+  overflow: visible;
+}
+
+.user-name .truncate,
+.user-count .truncate {
+  max-width: 110px;
+}
+
+.user-name .truncate:hover::after,
+.user-count .truncate:hover::after {
+  max-width: none; /* Exibe o conteúdo completo no hover */
+}

@@ -1,0 +1,253 @@
+body { 
+  overflow-x: hidden; 
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; 
+  width: calc(100% - 20vw); 
+  margin-left: 20vw; 
+}
+.module-container{
+  width: 80vw;
+}
+.createnewmodule{
+  width: 90%;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5vh;
+}
+
+.createnewmodule input{
+  width: 200px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  background-color: #6C63FF;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+.createnewmodule input:hover{
+  transition: 0.3s;
+  color: rgb(177, 173, 173);
+  background-color: #38327c;
+
+}
+
+.modulos-lista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.moduleslisttitle {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: 10px; 
+  color: #96959D;
+
+}
+.list{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: #232227;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.moduleslisttitle h4 {
+  flex: 1;
+  padding: 5px 0;
+  font-weight: bold;
+}
+.modulename{
+  width: 20vw;
+  text-align: justify;
+  padding-left: 15px;
+}
+.modulecoount{
+  width: 20vw;
+  text-align: justify; 
+  padding-left: 40px;
+}
+.titlesnames{
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.res{
+  margin-top: 80px;
+  color: white;
+  font-size: 25px;
+}
+
+.list button{
+  color: #6C63FF;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.list button:hover{
+  transition: 0.3s;
+  color: #38327c;
+}
+
+/* Adicione esses estilos ao seu arquivo CSS */
+.custom-modal {
+  width: 500px;
+  background: #232227;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  border: none;
+  border-radius: 10px;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  z-index: 1000; 
+}
+
+
+.addmodules{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.editmodule{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+.editmodule div{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+  margin-top: 10px;
+}
+
+.addmodules div{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 90%;
+    margin-top: 10px;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: #6c63ff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 25px;
+}
+.custom-modal label {
+  width: 100%;
+  color: #96959D;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 25px;
+  
+}
+
+.custom-modal input,
+.custom-modal textarea {
+  margin-top: 10px;
+  width: 100% !important;
+  height: 40px !important;
+  margin-left: 25px;
+  padding: 5px;
+  border: 1px solid white;
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+  background: none;
+  color: white;
+  font-size: 16px;
+}
+
+.custom-modal textarea {
+  height: 250px !important;
+  resize: none;
+
+}
+
+.buttons{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttons button{
+  width: 45% ;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin-left: 10px;
+}
+.buttons button:hover{
+  transition: 0.3s;
+  color: rgb(177, 173, 173);
+}
+.delete{
+  background-color: rgb(209, 9, 9);
+}
+.delete:hover{
+  transition: 0.3s;
+  background-color: rgb(82, 5, 5);
+  color: rgb(177, 173, 173);
+}
+.submit-new{
+  width: 65%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  background-color: #6C63FF;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+}
+.submit-new:hover{
+  transition: 0.3s;
+  color: rgb(177, 173, 173);
+  background-color: #38327c;
+
+}
+

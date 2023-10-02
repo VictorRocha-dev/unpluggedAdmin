@@ -1,0 +1,259 @@
+main {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start; 
+  flex-direction: column;
+  width: calc(100% - 20vw); 
+  margin-left: 20vw; 
+}
+.contentContainer{
+  width: 80vw;
+}
+.titlesnames{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.content-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+.contentlist p {
+  width: 65%;
+}
+
+.contentlisttitle {
+  width: 80%;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: 10px; 
+  color: #96959D;
+
+}
+
+.contentlisttitle h4 {
+  flex: 1;
+  padding: 5px 0;
+}
+
+.modulecoount{
+  width: 20vw;
+  text-align: justify; 
+  padding-left: 40px;
+}
+
+
+
+.list button{
+  color: #6C63FF;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+.list button:hover{
+  transition: 0.3s;
+  color: #38327c;
+}
+
+/* modal */
+.custom-modal-content{
+  width: 45%;
+  height: 98%;
+  background: #232227;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  border: none;
+  border-radius: 10px;
+  color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: left;
+  z-index: 1000; 
+}
+.close-button {
+  align-self: flex-end;
+  position: relative;
+  font-size: 26px;
+}
+.close-button:hover{
+  transition: all 0.5s;
+  color: white;
+}
+
+.containermodaladd{
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.containermodaladd div{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.custom-modal-content label {
+  color: #96959D;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 25px;
+  width: 100%;
+  
+}
+
+.custom-modal-content input {
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 25px;
+  padding: 5px;
+  border: 2px solid #96959D;
+  height: 30px;
+  outline: none;
+  border-radius: 5px;
+  background: none;
+  color: white;
+  font-size: 14px;
+}
+
+
+
+
+.custom-modal-content select {
+  margin-top: 10px;
+  width: 100%;
+  margin-left: 25px;
+  padding: 5px;
+  border: 2px solid #96959D;
+  height: 35px;
+  outline: none;
+  border-radius: 5px;
+  background: none;
+  color: white; 
+  font-size: 14px;
+}
+
+.custom-modal-content select option {
+  background-color: #333; 
+  color: white; 
+  padding: 20px;
+}
+
+.custom-file-input {
+  display: none;
+}
+
+.videoandsubmit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  margin-bottom: 35px;
+}
+
+.filecustom {
+  width: 65%;
+  border-radius: 3px;
+  border: 1px solid white;
+  height: 40px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ca9f02;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+}
+.filecustom:hover{
+  transition: all 0.5s;
+  background-color: #473800;
+}
+
+.filecustom label {
+  cursor: pointer;
+  margin-right: 6px;
+}
+.filecustom span{
+  color: white;
+}
+
+.custom-modal-content textarea {
+  height: 100px !important;
+  resize: none;
+  margin-top: 10px;
+  width: 100% !important;
+  margin-left: 25px;
+  padding: 5px;
+  border: 1px solid white;
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+  background: none;
+  color: white;
+  font-size: 16px;
+
+}
+
+
+.submit{
+  width: 65%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  background-color: #6C63FF;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin-left: 50px;
+  font-weight: bold;
+}
+.submit:hover{
+  transition: 0.3s;
+  color: rgb(177, 173, 173);
+  background-color: #38327c;
+
+}
+.buttons-contents{
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.buttons-contents button{
+  width: 45% ;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  margin-left: 20px;
+}
+.buttons-contents button:hover{
+  transition: 0.3s;
+  color: rgb(177, 173, 173);
+}
