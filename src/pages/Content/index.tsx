@@ -5,7 +5,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import Sidebar from "../../components/SideBar";
 import Search from "../../components/Search";
-import './content.css'
+import styles from './content.module.css'
 
 interface Content {
   id: number;
@@ -246,13 +246,13 @@ const Contents = () => {
       <Sidebar />
       <Search onSearchChange={(query) => setSearchQuery(query)} />
 
-      <div className="contentContainer">
+      <div className={styles.contentContainer}>
 
-        <div className="createnewmodule">
+        <div className={styles.createnewmodule}>
           <input type="button" value="Adicionar Conteudo" onClick={openModal} />
         </div>
 
-        <div className="content-list">
+        <div className={styles['content-list']}>
 
           <div className="contentlisttitle">
             <h4>Nome</h4>
@@ -261,7 +261,7 @@ const Contents = () => {
             <h4>Comentários</h4>
           </div>
 
-          <div className="contentlist ">
+          <div className={styles.contentlist}>
 
             {searchQuery.length > 0 ? (
               contents.filter((contents) =>
@@ -270,20 +270,20 @@ const Contents = () => {
                   .includes(searchQuery.toLowerCase())
               )
                 .map((contents) => (
-                  <div className="list" key={contents.id}>
-                    <div className="titlesnames">
+                  <div className={styles.list}key={contents.id}>
+                    <div className={styles.titlesnames}>
 
-                      <div className="modulename">
+                      <div className={styles.modulename}>
                         <p>{contents.content_name}</p>
                       </div>
 
-                      <div className="modulename">
+                      <div className={styles.modulename}>
                         <p>{contents.content_Module_name}</p>
                       </div>
-                      <div className="modulename">
+                      <div className={styles.modulename}>
                         <p>{contents.content_type}</p>
                       </div>
-                      <div className="modulecoount">
+                      <div className={styles.modulecount}>
                         <p>{contents.content_comments}</p>
                       </div>
 
@@ -304,22 +304,22 @@ const Contents = () => {
               :
               (
                 contents.map((contents) => (
-                  <div className="list" key={contents.id}>
-                    <div className="titlesnames">
+                  <div className={styles.list} key={contents.id}>
+                    <div className={styles.titlesnames}>
 
-                      <div className="modulename">
+                      <div className={styles.modulename}>
                         <p>{contents.content_name}</p>
                       </div>
 
-                      <div className="modulename">
+                      <div className={styles.modulename}>
                         <p>{contents.content_Module_name}</p>
                       </div>
 
-                      <div className="modulename">
+                      <div className={styles.modulename}>
                         <p>{contents.content_type}</p>
                       </div>
 
-                      <div className="modulecoount">
+                      <div className={styles.modulecount}>
                         <p>{contents.content_comments}</p>
                       </div>
 
@@ -347,19 +347,19 @@ const Contents = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Adicionar Content Modal"
-        className="custom-modal-content"
+        className={styles['custom-modal-content']}
         style={{
           overlay: {
             backgroundColor: 'rgba(0, 0 ,0, 0.9)'
           },
         }}
       >
-        <div className="containermodaladd">
-          <button className="close-button" onClick={closeModal}>
+        <div className={styles.containermodaladd}>
+          <button className={styles["close-button"]} onClick={closeModal}>
             <AiOutlineClose />
           </button>
           <div>
-            <label htmlFor="contentname" className="contentname">Nome do Conteudo</label>
+            <label htmlFor={styles.contentname} className={styles.contentname}>Nome do Conteudo</label>
             <input
               type="text"
               id="contentname"
