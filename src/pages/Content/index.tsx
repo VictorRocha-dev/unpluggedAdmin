@@ -5,8 +5,9 @@ import { AiOutlineClose } from "react-icons/ai";
 
 import Sidebar from "../../components/SideBar";
 import Search from "../../components/Search";
-import styles from './content.module.css'
-
+import './content.css'
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 interface Content {
   id: number;
   content_name: string;
@@ -25,12 +26,19 @@ interface Modulo {
 }
 
 const Contents = () => {
+
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  if (!isLoggedIn){
+    navigate('/');
+  }
   const [contents, setContents] = useState<Content[]>([]);
   const [modulos, setModulos] = useState<Modulo[]>([]);
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  
+
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -108,7 +116,7 @@ const Contents = () => {
       }
       const select1 = document.getElementById('moduleSelect');
       const select2 = document.getElementById('type');
-      
+
       if (select1.value === '' || select2.value === '') {
         alert('Por favor, selecione uma opção em todos os campos select.');
         return false; // Impede o envio do formulário
@@ -168,7 +176,7 @@ const Contents = () => {
     setEditContent(content);
     console.log("Content to edit:", content);
   };
-  
+
   const handleEditSubmit = async () => {
     try {
       const select1 = document.getElementById('moduleSelect') as HTMLSelectElement;
@@ -208,15 +216,26 @@ const Contents = () => {
     }
   };
 
-  const handleDeleteWithConfirmation = async () => {
-    const adminPassword = prompt('Digite a senha de administrador:');
 
-    if (adminPassword === null) {
+  const handleDeleteWithConfirmation = async () => {
+    const { value: adminPassword } = await Swal.fire({
+      title: 'Digite a senha de administrador:',
+      input: 'password',
+      inputAttributes: {
+        autocapitalize: 'off'
+      },
+      showCancelButton: true,
+      confirmButtonText: 'Confirmar',
+      cancelButtonText: 'Cancelar',
+    });
+  
+    if (adminPassword === undefined) {
       return;
     }
+  
     try {
       const isAdminPasswordCorrect = '123456789';
-
+  
       if (adminPassword === isAdminPasswordCorrect) {
         const response = await fetch(
           `http://localhost:3333/api/contents/${editContent.id}`,
@@ -224,20 +243,24 @@ const Contents = () => {
             method: 'DELETE',
           }
         );
-
-        if (!response.ok) {
-          throw new Error('Não foi possível deletar o Conteúdo.');
+  
+        if (response.ok) {
+          // A exclusão foi bem-sucedida
+          Swal.fire('Excluído!', 'Conteudo foi excluído com sucesso.', 'success').then(() => {
+            window.location.reload();
+            closeEditModal();
+          });
+        } else {
+          // A exclusão falhou
+          Swal.fire('Erro', 'Não foi possível deletar o conteudo.', 'error');
         }
-
-        alert('Conteúdo Excluído com Sucesso ');
-        window.location.reload();
-        closeEditModal();
       } else {
-        alert('Senha de administrador incorreta.');
-        return;
+        // Senha de administrador incorreta
+        Swal.fire('Erro', 'Senha de administrador incorreta.', 'error');
       }
     } catch (error) {
       console.error(error);
+      Swal.fire('Erro', 'Ocorreu um erro ao excluir o Conteudo.', 'error');
     }
   };
 
@@ -246,13 +269,13 @@ const Contents = () => {
       <Sidebar />
       <Search onSearchChange={(query) => setSearchQuery(query)} />
 
-      <div className={styles.contentContainer}>
+      <div className="contentContainer">
 
-        <div className={styles.createnewmodule}>
+        <div className="createnewmodule">
           <input type="button" value="Adicionar Conteudo" onClick={openModal} />
         </div>
 
-        <div className={styles['content-list']}>
+        <div className="content-list">
 
           <div className="contentlisttitle">
             <h4>Nome</h4>
@@ -261,7 +284,7 @@ const Contents = () => {
             <h4>Comentários</h4>
           </div>
 
-          <div className={styles.contentlist}>
+          <div className="contentlist ">
 
             {searchQuery.length > 0 ? (
               contents.filter((contents) =>
@@ -270,20 +293,20 @@ const Contents = () => {
                   .includes(searchQuery.toLowerCase())
               )
                 .map((contents) => (
-                  <div className={styles.list}key={contents.id}>
-                    <div className={styles.titlesnames}>
+                  <div className="list" key={contents.id}>
+                    <div className="titlesnames">
 
-                      <div className={styles.modulename}>
+                      <div className="modulename">
                         <p>{contents.content_name}</p>
                       </div>
 
-                      <div className={styles.modulename}>
+                      <div className="modulename">
                         <p>{contents.content_Module_name}</p>
                       </div>
-                      <div className={styles.modulename}>
+                      <div className="modulename">
                         <p>{contents.content_type}</p>
                       </div>
-                      <div className={styles.modulecount}>
+                      <div className="modulecoount">
                         <p>{contents.content_comments}</p>
                       </div>
 
@@ -304,22 +327,22 @@ const Contents = () => {
               :
               (
                 contents.map((contents) => (
-                  <div className={styles.list} key={contents.id}>
-                    <div className={styles.titlesnames}>
+                  <div className="list" key={contents.id}>
+                    <div className="titlesnames">
 
-                      <div className={styles.modulename}>
+                      <div className="modulename">
                         <p>{contents.content_name}</p>
                       </div>
 
-                      <div className={styles.modulename}>
+                      <div className="modulename">
                         <p>{contents.content_Module_name}</p>
                       </div>
 
-                      <div className={styles.modulename}>
+                      <div className="modulename">
                         <p>{contents.content_type}</p>
                       </div>
 
-                      <div className={styles.modulecount}>
+                      <div className="modulecoount">
                         <p>{contents.content_comments}</p>
                       </div>
 
@@ -347,19 +370,19 @@ const Contents = () => {
         isOpen={isModalOpen}
         onRequestClose={closeModal}
         contentLabel="Adicionar Content Modal"
-        className={styles['custom-modal-content']}
+        className="custom-modal-content"
         style={{
           overlay: {
             backgroundColor: 'rgba(0, 0 ,0, 0.9)'
           },
         }}
       >
-        <div className={styles.containermodaladd}>
-          <button className={styles["close-button"]} onClick={closeModal}>
+        <div className="containermodaladd">
+          <button className="close-button" onClick={closeModal}>
             <AiOutlineClose />
           </button>
           <div>
-            <label htmlFor={styles.contentname} className={styles.contentname}>Nome do Conteudo</label>
+            <label htmlFor="contentname" className="contentname">Nome do Conteudo</label>
             <input
               type="text"
               id="contentname"

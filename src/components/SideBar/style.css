@@ -29,11 +29,7 @@
   width: 100%;
 }
 
-.menu > div {
-  display: flex;
-  align-items: center;
 
-}
 
 .menu i {
   color: #a6adba;
@@ -49,11 +45,63 @@
   transition: 0.3s;
 }
 
-.menu :hover {
+.links:hover {
   transition: 0.3s;
   background-color: #2B2634;
   cursor: pointer;
 }
 .links{
-  padding: 20px 0 20px 0;
+  padding: 15px 0 20px 0;
+}
+
+#sair{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+#sair span{
+  color: #c42f2f;
+}
+
+#sair i{
+  color: #f53535;
+}
+span{
+  color: #a6adba;
+}
+/* Adicione este CSS ao seu estilo */
+.binaural-dropdown {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  margin-top: 5px;
+  display: none;
+  
+}
+
+.binaural-dropdown {
+  display: block;
+}
+.meditation-dropdown {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  display: none;
+}
+
+ .meditation-dropdown {
+  display: block;
+}
+.arrow{
+  display: flex;
+  margin-right: 26px;
+  font-size: 16px;
+  font-weight: bold;
+}
+.ccc{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }

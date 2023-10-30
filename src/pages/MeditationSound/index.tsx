@@ -6,11 +6,18 @@ import { useNavigate } from "react-router-dom";
 
 interface Meditation {
   id: number;
-  name: string;
-  meditations: number;
+  meditation_name: string;
+  meditation_sound: string;
+  meditation_img: string;
+  meditation_duration: number;
+  Meditation_autor: string;
+  meditationCategoryId: number;
+  meditation_category: {
+    name: string;
+  };
 }
 
-const Meditation = () => {
+const MeditationSound = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   if (!isLoggedIn) {
@@ -24,7 +31,7 @@ const Meditation = () => {
     const fetchModulos = async () => {
       try {
         const response = await fetch(
-          "http://localhost:3333/api/meditations/meditationsCategoryadm"
+          "http://localhost:3333/api/meditations/meditationadmin"
         );
   
         if (!response.ok) {
@@ -55,35 +62,35 @@ const Meditation = () => {
 
       <div className={styles.meditationContainer}>
         <div className={styles.createnewplaylist}>
-          <input type="button" value="Adicionar Nova" />
+          <input type="button" value="Adicionar Meditação" />
         </div>
 
         <div className={styles.playlists}>
           <div className={styles.playliststittle}>
-            <h4>Categoria</h4>
             <h4>Nome</h4>
-            <h4>Meditações</h4>
+            <h4>Duração</h4>
+            <h4>Autor</h4>
           </div>
 
           <div className={styles.playlistlist}>
             {searchQuery.length > 0
               ? meditation
                   .filter((meditation) =>
-                  meditation.name
+                  meditation.meditation_name
                       .toLowerCase()
                       .includes(searchQuery.toLowerCase())
                   )
-                  .map((meditation, index) => (
+                  .map((meditation) => (
                     <div className="list" key={meditation.id}>
                       <div className="titlesnames">
                         <div className="modulename">
-                          <p>Categoria {index + 1}</p>
+                          <p>{meditation.meditation_name}</p>
                         </div>
                         <div className="modulename">
-                          <h3>{meditation.name}</h3>
+                          <h3>{meditation.meditation_duration}</h3>
                         </div>
                         <div className="modulecoount">
-                          <p>{meditation.meditations}</p>
+                          <p>{meditation.Meditation_autor}</p>
                         </div>
                       </div>
                       <div>
@@ -91,24 +98,24 @@ const Meditation = () => {
                       </div>
                     </div>
                   ))
-              : meditation.map((meditation, index) => (
-                  <div className="list" key={meditation.id}>
-                    <div className="titlesnames">
-                      <div className="modulename">
-                        <p>Categoria {index + 1}</p>
-                      </div>
-                      <div className="modulename">
-                        <p>{meditation.name}</p>
-                      </div>
-                      <div className="modulecoount">
-                        <p>{meditation.meditations}</p>
-                      </div>
+              : meditation.map((meditation) => (
+                <div className="list" key={meditation.id}>
+                  <div className="titlesnames">
+                    <div className="modulename">
+                      <p>{meditation.meditation_name}</p>
                     </div>
-                    <div>
-                      <button type="button">Editar</button>
+                    <div className="modulename">
+                      <h3>{meditation.meditation_duration}</h3>
+                    </div>
+                    <div className="modulecoount">
+                      <p>{meditation.Meditation_autor}</p>
                     </div>
                   </div>
-                ))}
+                  <div>
+                    <button type="button">Editar</button>
+                  </div>
+                </div>
+              ))}
           </div>
 
           
@@ -118,4 +125,4 @@ const Meditation = () => {
   );
 };
 
-export default Meditation;
+export default MeditationSound;

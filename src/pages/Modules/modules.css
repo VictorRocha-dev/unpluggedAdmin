@@ -53,6 +53,11 @@ main {
   color: #96959D;
 
 }
+.moduleslisttitle h4 {
+  flex: 1;
+  padding: 5px 0;
+  font-weight: bold;
+}
 .list{
   display: flex;
   align-items: center;
@@ -64,11 +69,7 @@ main {
   color: #fff;
 }
 
-.moduleslisttitle h4 {
-  flex: 1;
-  padding: 5px 0;
-  font-weight: bold;
-}
+
 .modulename{
   width: 20vw;
   text-align: justify;

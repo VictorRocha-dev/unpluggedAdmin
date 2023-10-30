@@ -1,38 +1,48 @@
-import { useState, useEffect } from "react";
-import styles from './binaural.module.css'
+import { useState , useEffect } from "react";
+
+import styles from './binauralSound.module.css'
 import Sidebar from '../../components/SideBar';
 import Search from '../../components/Search';
 import { useNavigate } from 'react-router-dom';
 
-interface Binaral{
+interface Binaural {
   id: number;
-  name: string;
-  binaural: number;
+  binaural_name: string;
+  binaural_sound: string;
+  binaural_img: string;
+  binaural_duration: number;
+  binaral_autor: string;
+  binauralCategoryId: number;
+  binauralCategory: {
+    name: string;
+    images: string;
+  };
 }
 
-
-
-const Binaural = () => {
+const BinauralSound = () => {
   const navigate = useNavigate();
   const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [binaural, setBinaural] = useState<Binaural[]>([]);
+
   if (!isLoggedIn){
     navigate('/');
   }
 
-  const [searchQuery, setSearchQuery] = useState<string>('');
-  const [binaural, setBinaural] = useState<Binaral[]>([]);
 
   useEffect(() => {
     const fetchModulos = async () => {
       try {
-        const response = await fetch("http://localhost:3333/api/binaurals/listCategoryAdm");
-        
+        const response = await fetch("http://localhost:3333/api/binaurals/binauraladm");
+
         if (!response.ok) {
           throw new Error("Não foi possível buscar os módulos.");
         }
         
-        const data = await response.json(); // Aguarde a resolução da promessa aqui
-  
+        const data = await response.json(); 
+        console.log(data);
+        
         if (data.binaurals && Array.isArray(data.binaurals)) {
           setBinaural(data.binaurals);
         } else {
@@ -45,44 +55,44 @@ const Binaural = () => {
   
     fetchModulos();
   }, []);
-  
+
   return (
-    <main className={styles.binaural}>
+    <main className={styles.binauralSound}>
       <Sidebar/>
       <Search  onSearchChange={(query) => setSearchQuery(query)}/>
-
+      
       <div className={styles.binauralContainer}>
          <div className={styles.createnewplaylist}>
-          <input type="button" value="Adicionar Playlist"/>
+          <input type="button" value="Adicionar Binaural"/>
         </div>
 
         <div className={styles.playlists}>
 
           <div className={styles.playliststittle}>
-            <h4>Playlist</h4>
             <h4>Nome</h4>
-            <h4>Sons</h4>
+            <h4>Duração</h4>
+            <h4>Autor</h4>
           </div>
 
           <div className={styles.playlistlist}>
             {searchQuery.length > 0
               ? binaural
                   .filter((binaural) =>
-                  binaural.name
+                  binaural.binaural_name
                       .toLowerCase()
                       .includes(searchQuery.toLowerCase())
                   )
-                  .map((binaural, index) => (
+                  .map((binaural) => (
                     <div className="list" key={binaural.id}>
                       <div className="titlesnames">
                         <div className="modulename">
-                          <p>Playlist {index + 1}</p>
+                          <p>{binaural.binaural_name}</p>
                         </div>
                         <div className="modulename">
-                          <h3>{binaural.name}</h3>
+                          <h3>{binaural.binaural_duration}</h3>
                         </div>
                         <div className="modulecoount">
-                          <p>{binaural.binaural}</p>
+                          <p>{binaural.binaral_autor}</p>
                         </div>
                       </div>
                       <div>
@@ -95,17 +105,17 @@ const Binaural = () => {
                       </div>
                     </div>
                   ))
-              : binaural .map((binaural, index) => (
+              : binaural .map((binaural) => (
                 <div className="list" key={binaural.id}>
                   <div className="titlesnames">
                     <div className="modulename">
-                      <p>Playlist {index + 1}</p>
+                      <p>{binaural.binaural_name}</p>
                     </div>
                     <div className="modulename">
-                      <p>{binaural.name}</p>
+                      <p>{binaural.binaural_duration}</p>
                     </div>
                     <div className="modulecoount">
-                      <p>{binaural.binaural}</p>
+                      <p>{binaural.binaral_autor}</p>
                     </div>
                   </div>
                   <div>
@@ -127,4 +137,4 @@ const Binaural = () => {
   );
 }
 
-export default Binaural;
+export default BinauralSound;

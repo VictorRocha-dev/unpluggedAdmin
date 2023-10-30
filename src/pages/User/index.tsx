@@ -3,6 +3,7 @@ import './user.css';
 import Sidebar from '../../components/SideBar';
 import { BiSearch } from 'react-icons/bi';
 import Modal from 'react-modal';
+import { useNavigate } from 'react-router-dom';
 
 interface User {
   id: string;
@@ -14,6 +15,12 @@ interface User {
 Modal.setAppElement('#root');
 
 const Users = () => {
+  const navigate = useNavigate();
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+
+  if (!isLoggedIn){
+    navigate('/');
+  }
   const [query, setQuery] = useState<string>('');
   const [users, setUsers] = useState<User[]>([]);
   const [filteredUsers, setFilteredUsers] = useState<User[]>([]);
